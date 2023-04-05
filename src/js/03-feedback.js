@@ -7,10 +7,10 @@ const refs = {
   message: document.querySelector('textarea[name=message]'),
 };
 
-refs.form.addEventListener('input', throttle(foundEvenet, 500));
+refs.form.addEventListener('input', throttle(foundEvent, 500));
 refs.submit.addEventListener('click', getSubmitEvent);
 
-function foundEvenet(event) {
+function foundEvent(event) {
   if (event.currentTarget) {
     const {
       elements: { email, message },
@@ -54,14 +54,7 @@ function getSubmitEvent(event) {
   if (event.target.type === 'submit') {
     event.preventDefault();
 
-    if (
-      refs.email.value !== '' &&
-      refs.message.value !== '' &&
-      refs.email.value.includes('@')
-    ) {
-      refs.email.value = '';
-      refs.message.value = '';
-    }
+    auditFormValue();
 
     if (localStorage.getItem('feedback-form-state') === null) {
       return;
@@ -70,4 +63,19 @@ function getSubmitEvent(event) {
     console.log(localStorage.getItem('feedback-form-state'));
     localStorage.clear();
   }
+}
+
+function auditFormValue() {
+  if (
+    refs.email.value !== '' &&
+    refs.message.value !== '' &&
+    refs.email.value.includes('@')
+  ) {
+    resetFormValue();
+  }
+}
+
+function resetFormValue() {
+  refs.email.value = '';
+  refs.message.value = '';
 }
