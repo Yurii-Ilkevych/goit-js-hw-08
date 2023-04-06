@@ -7,7 +7,7 @@ const refs = {
   message: document.querySelector('textarea[name=message]'),
 };
 
-refs.form.addEventListener('input', throttle(foundEvent, 500));
+refs.form.addEventListener('input', throttle(foundEvent, 300));
 refs.submit.addEventListener('click', getSubmitEvent);
 
 function foundEvent(event) {
