@@ -12,4 +12,5 @@ const galleryMurkup = createGalleryitems(galleryItems);
 galleryEl.insertAdjacentHTML('beforeend', galleryMurkup);
 const lazyImg = document.querySelectorAll("img[loading='lazy']");
 const gallery = new SimpleLightbox('.gallery a', option);
+galleryEl.style.listStyle = "none";
 lazyload(lazyImg);

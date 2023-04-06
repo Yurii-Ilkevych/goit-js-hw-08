@@ -17,13 +17,11 @@ function foundEvent(event) {
     } = event.currentTarget;
 
     if (
-      email.value !== '' &&
-      message.value !== '' &&
-      email.value.includes('@')
+      email.value !== ''
     ) {
       const feedbackState = { email: email.value, message: message.value };
       saveFeedbackValue(feedbackState);
-      console.log(feedbackState);
+      // console.log(feedbackState);
     }
   }
 }
@@ -59,17 +57,17 @@ function getSubmitEvent(event) {
     if (localStorage.getItem('feedback-form-state') === null) {
       return;
     }
-
-    console.log(localStorage.getItem('feedback-form-state'));
+    const feedbackValue = localStorage.getItem('feedback-form-state');
+    const GetParsefeedbackValue = JSON.parse(feedbackValue);
+    console.log(GetParsefeedbackValue);
     localStorage.clear();
   }
 }
 
 function auditFormValue() {
   if (
-    refs.email.value !== '' &&
-    refs.message.value !== '' &&
-    refs.email.value.includes('@')
+    refs.email.value !== ''
+    
   ) {
     resetFormValue();
   }
