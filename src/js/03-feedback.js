@@ -66,11 +66,12 @@ function getSubmitEvent(event) {
 
 function auditFormValue() {
   if (
-    refs.email.value !== ''
-    
-  ) {
+    refs.email.value === '' || refs.message.value === '')
+    alert("Поля 'Email' або 'Message' не можуть бути пустими" )
+   {
     resetFormValue();
   }
+  
 }
 
 function resetFormValue() {
