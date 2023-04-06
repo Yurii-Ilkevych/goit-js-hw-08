@@ -60,7 +60,7 @@ function getSubmitEvent(event) {
     const feedbackValue = localStorage.getItem('feedback-form-state');
     const GetParsefeedbackValue = JSON.parse(feedbackValue);
     console.log(GetParsefeedbackValue);
-    localStorage.clear();
+    localStorage.removeItem();
   }
 }
 
